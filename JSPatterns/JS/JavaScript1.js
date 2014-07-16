@@ -1,4 +1,4 @@
-﻿//divides calling object bu dividend 
+﻿//divides calling object by dividend and return bool
 Number.prototype.isDivisibleBy = function(dividend){
     return this % dividend == 0;
 }
@@ -38,5 +38,5 @@ function showDivisibles(start, end, threeText, fiveText)
 }
 
 window.onload = function () {
-    showDivisibles(1, 100, "divides by 3", "divides by 5");
+    //showDivisibles(1, 100, "divides by 3", "divides by 5");
 }
