@@ -21,7 +21,7 @@ function showDivisibles(start, end, threeText, fiveText)
 
     for (var i = start; end >= i; i++) {
 
-        if (i.isDivisibleBy(3)  && i % 5 == 0) { 
+        if (i.isDivisibleBy(3) && i.isDivisibleBy(3)) {
             document.write(threeText + " and " + fiveText + "<br />");
         }
 
