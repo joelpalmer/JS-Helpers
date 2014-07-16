@@ -25,10 +25,10 @@ function showDivisibles(start, end, threeText, fiveText)
             document.write(threeText + " and " + fiveText + "<br />");
         }
 
-        else if (i % 3 == 0) {
+        else if (i.isDivisibleBy(3)) {
             document.write(threeText + "<br />");
         }
-        else if (i % 5 == 0) { 
+        else if (i.isDivisibleBy(5)) {
             document.write(fiveText + "<br />");
         }
         else {
