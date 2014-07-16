@@ -1,4 +1,4 @@
-﻿
+﻿//divides calling object bu dividend 
 Number.prototype.isDivisibleBy = function(dividend){
     return this % dividend == 0;
 }
