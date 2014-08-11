@@ -1,0 +1,247 @@
+﻿<!DOCTYPE html>
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+    <title>Mileage Gen</title>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map-canvas {
+            height: 50%;
+            width: 50%;
+        }
+
+        #content-pane {
+            float: right;
+            width: 48%;
+            padding-left: 2%;
+        }
+
+        #outputDiv {
+            font-size: 14px;
+        }
+
+        #outercontainter {
+            padding-left: 4px;
+        }
+    </style>
+    <script>
+        var directionsDisplay;
+        var directionsService = new google.maps.DirectionsService();
+        var map;
+
+        function initialize() {
+            directionsDisplay = new google.maps.DirectionsRenderer();
+            var sa = new google.maps.LatLng(29.578306, -98.440629);
+            var mapOptions = {
+                zoom: 7,
+                center: sa
+            };
+            map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+            directionsDisplay.setMap(map);
+        }
+        function calcRoute() {
+            var start = document.getElementById('start').value;
+            var end = document.getElementById('end').value;
+            var request = {
+                origin: start,
+                destination: end,
+                travelMode: google.maps.TravelMode.DRIVING
+            }
+            directionsService.route(request, function (response, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                    showDistance(response);
+                }
+
+            });
+        }
+
+        function showDistance(directionResult) {
+       
+            var myDistance = directionResult.routes[0].legs[0].distance;
+            var myDistanceText = myDistance.text;
+            document.getElementById('outputDiv').innerHTML = myDistanceText;
+
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+
+</head>
+<body>
+    <div id="outercontainter">
+        <div id="panel">
+            <b>Start: </b>
+            <select id="start" onchange="calcRoute();">
+                <option value=""></option>
+                <option value="3401 SW Military Drive
+San Antonio, TX 78211">
+                    SW Military
+                </option>
+                <option value="2600 North Loop 1604 W
+San Antonio, TX 78248">
+                    Bitters
+                </option>
+
+
+                <option value="10911 Culebra Road
+San Antonio, TX 78253">
+                    Alamo Ranch
+                </option>
+
+                <option value="7200 Culebra Road San Antonio, TX 78251">
+                    Culebra
+                </option>
+
+
+                <option value="2023 Gold Canyon Drive
+San Antonio, TX 78232
+">
+                    Gold Canyon
+                </option>
+
+                <option value="8960 Huebner Road
+San Antonio, TX 78240">
+                    Huebner
+                </option>
+
+                <option value="1440 S.E. Military Drive
+San Antonio, TX 78214">
+                    Mission
+                </option>
+
+                <option value="19000 Ronald Reagan
+San Antonio, TX 78258
+">
+                    Reagan High
+                </option>
+
+                <option value="8826 Bandera Road
+San Antonio, TX 78250">
+                    Bandera
+                </option>
+
+                <option value="12822 W Interstate 10
+San Antonio, TX 78249">
+                    De Zavala
+                </option>
+
+                <option value="10730 Gulfdale Street
+San Antonio, TX 78216">
+                    Gulfdale
+                </option>
+
+                <option value="122 Donaldson Avenue
+San Antonio, TX 78201">
+                    Jefferson
+                </option>
+
+                <option value="11530 North Interstate 35
+San Antonio, TX 78233">
+                    O'Connor
+                </option>
+
+                <option value="6927 S. Zarzamora Street
+San Antonio, TX 78224">
+                    Zarzamora
+                </option>
+
+                <option value="10610 Potranco Rd, San Antonio, TX 78251">
+                    Potranco
+                </option>
+            </select> <b>End:</b> <select id="end" onchange="calcRoute();">
+                <option value=""></option>
+                <option value="3401 SW Military Drive
+San Antonio, TX 78211">
+                    SW Military
+                </option>
+
+
+                <option value="2600 North Loop 1604 W
+San Antonio, TX 78248">
+                    Bitters
+                </option>
+
+
+                <option value="10911 Culebra Road
+San Antonio, TX 78253">
+                    Alamo Ranch
+                </option>
+
+                <option value="7200 Culebra Road San Antonio, TX 78251">
+                    Culebra
+                </option>
+
+
+                <option value="2023 Gold Canyon Drive
+San Antonio, TX 78232
+">
+                    Gold Canyon
+                </option>
+
+                <option value="8960 Huebner Road
+San Antonio, TX 78240">
+                    Huebner
+                </option>
+
+                <option value="1440 S.E. Military Drive
+San Antonio, TX 78214">
+                    Mission
+                </option>
+
+                <option value="19000 Ronald Reagan
+San Antonio, TX 78258
+">
+                    Reagan High
+                </option>
+
+                <option value="8826 Bandera Road
+San Antonio, TX 78250">
+                    Bandera
+                </option>
+
+                <option value="12822 W Interstate 10
+San Antonio, TX 78249">
+                    De Zavala
+                </option>
+
+                <option value="10730 Gulfdale Street
+San Antonio, TX 78216">
+                    Gulfdale
+                </option>
+
+                <option value="122 Donaldson Avenue
+San Antonio, TX 78201">
+                    Jefferson
+                </option>
+
+                <option value="11530 North Interstate 35
+San Antonio, TX 78233">
+                    O'Connor
+                </option>
+
+                <option value="6927 S. Zarzamora Street
+San Antonio, TX 78224">
+                    Zarzamora
+                </option>
+
+                <option value="10610 Potranco Rd, San Antonio, TX 78251">
+                    Potranco
+                </option>
+            </select>
+
+        </div>
+        <div id="content-pane">
+
+            <strong>Mileage:</strong><div id="outputDiv"></div>
+        </div>
+        <div id="map-canvas"></div>
+    </div>
+</body>
+</html>
